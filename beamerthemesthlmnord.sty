@@ -432,16 +432,29 @@
     		%\node[anchor=south west,sider, fill=primary, minimum height=0.95\paperheight] at (current page.south west){};
 			\node[align=left] at (current page.center){
 				{\usebeamerfont{title}\usebeamercolor*[fg]{title}\inserttitle}\\[0.3cm]
+				\ifx\insertsubtitle\@empty%
+				\else%
 				{\usebeamerfont{subtitle}\usebeamercolor*[fg]{subtitle}\insertsubtitle}\\[0.1cm]
-				
+				\fi%
 				\usebeamercolor[fg]{footer}\rule{0.7\paperwidth}{0.2pt}	\\[0.35cm]
-				
+				\ifx\insertauthor\@empty%
+				\else%
 				{\usebeamerfont{author title}\usebeamercolor*[fg]{author title}Created by: {\usebeamerfont{author}\usebeamercolor*[fg]{author}\insertauthor}}\\[0.3cm]
+				\fi%
+				\ifx\insertinstitute\@empty%
+				\else%
 				{\usebeamerfont{institute title}\usebeamercolor*[fg]{institute title}Institute: {\usebeamerfont{institute}\usebeamercolor*[fg]{institute}\insertinstitute}}\\[0.3cm]
+				\fi%
+				\ifdefined\course
 				{\usebeamerfont{institute title}\usebeamercolor*[fg]{institute title}Course: {\usebeamerfont{institute}\usebeamercolor*[fg]{institute}\course}}\\[0.3cm]
+				\else%
+				\fi%
+				\ifdefined\filename%
 				{\usebeamerfont{institute title}\usebeamercolor*[fg]{institute title}File: {\usebeamerfont{institute}\usebeamercolor*[fg]{institute}\filename}}\\[0.3cm]
+				\else%
+				\fi%
 				%\usebeamerfont{author}\small{FileID: \color{nordTen}\fileid} 
-			 %\includegraphics[width=\logo@width, height=\logo@height, keepaspectratio]{assets/titlelogo}
+			 	%\includegraphics[width=\logo@width, height=\logo@height, keepaspectratio]{assets/titlelogo}
 			};
 			\node[anchor=south,outer ysep=0.4cm] at (current page.south){\small\color{nordThree!90} \XeLaTeX ed on \insertdate};
 			%\node[anchor=south east,icon] at (current page.south east)(logo){\includegraphics[width=\logo@width, height=\logo@height, keepaspectratio]{\inserttitlegraphic}};
